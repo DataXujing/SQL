@@ -64,3 +64,4 @@ In this text, we'll use SQLite. It's important to understand that if you copy co
 - Each DBMS has its own "dialect"
 - SQL can translate
 - You will tweak based on the "dialect" your DMBS speaks
+

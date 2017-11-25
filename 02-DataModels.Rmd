@@ -1,0 +1,43 @@
+# Data Models and Diagrams
+
+**Learning Objectives**
+
+- Explain why thinking beforing coding is important
+- Explain why it is important to understand how the data in a database relates to one another
+- Describe what a databse is at its core
+- Describe data modeling
+- Define relational database system
+- Discuss advent of relational databases in SQL
+
+## Think before code
+
+The reason why thinking beforing coding is importan is because you have to understand the structure of the data well to effectively write queries. Understanding your data means the following:
+
+- Understand the business process or subject matter the data is modeled after
+- Know the business rules
+- Understand how your data is organized and structured in the table 
+
+Before you start to write a query, think about:
+
+- what is the problem you are trying to solve?
+- what is the data you need to get?
+- how does the data relate to each other?
+- how does it interact? 
+- what are some of the problems that you may want to solve with this data and need to be aware of?
+- what are the types of joints or business processes in the data modeling?
+
+This will really help you because not only will you get more accurate results, but also speed up the time it takes you to work and get things done.  If you start to think about what you're doing before you do it, you should hopefully also have less rework. 
+
+Now what is a database and what is a table? 
+
+> **Database**: A container (usually a file or set of files) to stre organized data; a set of related information
+
+> **Tables**: A structured list of data or a specific type
+
+A database is really a container that is usually a file or set of files and is used to organize and store all of the data. If you think of this in real world terms, It'd be like a filing system that has many cabinets along a wall. Within that system, within a database, we have tables, these tables are structured lists of data elements or specific data type. Going back to our analogy, you can think of this as maybe one of the cabinets within a whole wall of cabinets. Then if we dive further into the cabinet, into a table, what we find is we have columns and rows, which of course is what makes up a table. A table is made up of a series of individual columns, and then a row and a table is a record. Through tables, rows, and columns, ultimately throughout the database we have a mechanism to store and retrieve data. 
+
+## What is data modeling?
+
+
+
+
