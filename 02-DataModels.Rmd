@@ -238,3 +238,5 @@ Color, */
 Price,
 Descp
 ```
+
+You can use a combination of a backslash(`\`) and an asterisk(`*`). What this is effectively saying is, don't run anything between the two backslashes and the asterisk. 
