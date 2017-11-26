@@ -31,9 +31,9 @@ There are a lot of jobs requre SQL and it is not just for data science. It is im
 
 The DBA will be responsible for giving permissions to people and determining who has access to what data. They are often responsible for managing the tables and creating them. Data scientist need to get the rights from DBA to create his/her own table and insert data into them. The two roles are similar in that they both use SQL to interact with the data. But the main difference is that the data scientist is really the end user. Whereas the DBA is the one who administers it, governs it and manages the database, as a whole. 
 
-
+<center>
 ```{block, type='foo'}
-| Database Admin | Data Scientist |
+| Database Admin       | Data Scientist        |
 |----------------|----------------|
 | Manages/governs entire database| End user of a database |
 | Gives permissions to users | Retrieve data (mainly) |
@@ -41,6 +41,7 @@ The DBA will be responsible for giving permissions to people and determining who
 | Manages and creates tables | Combine multiple sources together  |
 | Uses SQL to query and retrive data | Writes complex queries for analysis (maybe but usually not) |
 ```
+</center>
 
 **SQL and Database Management System(DBMS)**
 
