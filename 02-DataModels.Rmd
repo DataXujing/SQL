@@ -130,3 +130,71 @@ Here is an example of how different RDMS differ in syntax:
 
 If you are using SQLite and understand it's `LIMIT 5`. When switch over to a DB2 system, you can easily Google in terms of the syntax in DB2. 
 
+## Create table
+
+As a data scientist, you are always building models and making predictions. You may want to take those predictions that you create and write them back to a database. This ensures that someone else could then pick up those predictions and use them in a dashboard. Or you may want to create a dashboard or visualize it with another tool that can be hooked up and used with that database. It's also helpful if you're extracting data off the web or scraping it from somewhere and you want to store this data in a database. As we have previously discussed, the data scientist isn't usually the one in charge of managing the entire database, that usually left to the DBA or some type of administrator. Even so, it's helpful to have a basic understanding of how this works. You can use the statement `CREATE TABLE` to do this.
+
+```sql
+CREATE TABLE Shoes
+(
+Id     char(10)     PRIMARY KEY,
+Brand  char(10)     NOT NULL,
+Types  char(250)    NOT NULL,
+Color  char(250)    NOT NULL,
+Price  decimal(8,2) NOT NULL,
+Descp  Varchar(750) NULL
+);
+```
+
+In the above example, you create a table named "`Shoes`" by putting the name after `CREATE TABLE`. Then define the list of columns in the brackets. The first column is `Id`. It is a character with lenth 10. And the `Id` is going to be primary key. So you define data type (how many characters or decimals you allow to be inserted into this column), whether or not you allow null values. By default, it assumes that null values are accepted. 
+
+The syntax for creating these tables varies greatly by relational database management system that you're using. The above example exhibits the basic structure to create a table. However, it's important to check the specifications and syntax of the relational database management system you're using. An important thing to note when creating a table is to define whether a column can contain a null value or is a primary key. There are several things to pay special attention here:
+
+1. Don't confuse null value with empty string. Null value is the absence of everything, whereas empty string is a value there, such as space. 
+1. A primary key cannot accept null values. The `Id` in the example can never have an empty value or not any value. 
+1. If you indicate that a column cannot be null, then you will get an error if there is any missing value in that column.
+
+There are two ways to incert data to the table after defining the variables:
+
+(1) Use `INSERT INTO` statement
+
+```sql
+INSERT INTO Shoes
+VALUES ( '14535974',
+'Gucci',
+'Slippers',
+'Pink',
+'695.00',
+NULL
+);
+```
+
+The first method will take the first value indicated and put it in the first column; the second value will go to the second column, and so on and so forth. It works. However, a potential problem of this method is that you have no guarantee that data is going into the correct column. It is better to be more specific. 
+
+(2) Use `INSERT INTO` and `VALUES`
+
+```sql
+INSERT INTO Shoes
+(Id, 
+Brand,
+Types,
+Color,
+Price,
+Descp
+)
+VALUES 
+( 
+'14535974',
+'Gucci',
+'Slippers',
+'Pink',
+'695.00',
+NULL
+);
+```
+
+The second method also lists the columns. This can be really beneficial if you want to insert values into some columns but not all. I will recommend using this method. It's a little safer because you have more control and know exactly which value is going and into which column. 
+
+Now you have learned  how to create tables using SQL. There's another thing you can do with tables which is to create a temporary table. 
+
+
