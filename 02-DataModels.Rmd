@@ -9,7 +9,7 @@
 - Define relational database system
 - Discuss advent of relational databases in SQL
 
-## Think before code
+## Think Before Code
 
 The reason why thinking beforing coding is importan is because you have to understand the structure of the data well to effectively write queries. Understanding your data means the following:
 
@@ -36,7 +36,7 @@ Now what is a database and what is a table?
 
 A database is really a container that is usually a file or set of files and is used to organize and store all of the data. If you think of this in real world terms, It'd be like a filing system that has many cabinets along a wall. Within that system, within a database, we have tables, these tables are structured lists of data elements or specific data type. Going back to our analogy, you can think of this as maybe one of the cabinets within a whole wall of cabinets. Then if we dive further into the cabinet, into a table, what we find is we have columns and rows, which of course is what makes up a table. A table is made up of a series of individual columns, and then a row and a table is a record. Through tables, rows, and columns, ultimately throughout the database we have a mechanism to store and retrieve data. 
 
-## What is data model?
+## What is Data Model?
 
 Data model is what we use to organize information for multiple tables and how they relate to each other together. This helps tremendously in providing structure to the information in the system. Usually a data model represents a business process and it also helps you understand a business process. As a data scientist, you often need to work with a business person in understanding the data and how it fits together. But at the same time, the business person will learn a lot from the data modeller to better understand how their business actually works together by seeing the data and how it interacts with each other. 
 
@@ -83,7 +83,7 @@ In UML notation, we have a 1.1 which represents the concept of one and 1.* which
 
 Get familar with the different notations since you'll be looking at ER diagrams quite frequently and you'll need to understand these notations when reading ER diagrams so you can understand how you're going to write your query and join the table together or even to find out what's listed in the table. Having a good understanding of why the data is structured in a particular way and how to read the ER diagrams is necessary for writing queries and ensuring accurate results. 
 
-## Retrive data with `SELECT`
+## Retrive Data with `SELECT`
 
 The majority of what data scientists are doing with SQL is retrieving data. To get started, the first statement to learn is `SELECT`. There are two pieces of information to specify in `SELECT` statement: what to select and where it is from. It will be straightforward with an example.
 
@@ -130,7 +130,7 @@ Here is an example of how different RDMS differ in syntax:
 
 If you are using SQLite and understand it's `LIMIT 5`. When switch over to a DB2 system, you can easily Google in terms of the syntax in DB2. 
 
-## Create table
+## Create Table
 
 As a data scientist, you are always building models and making predictions. You may want to take those predictions that you create and write them back to a database. This ensures that someone else could then pick up those predictions and use them in a dashboard. Or you may want to create a dashboard or visualize it with another tool that can be hooked up and used with that database. It's also helpful if you're extracting data off the web or scraping it from somewhere and you want to store this data in a database. As we have previously discussed, the data scientist isn't usually the one in charge of managing the entire database, that usually left to the DBA or some type of administrator. Even so, it's helpful to have a basic understanding of how this works. You can use the statement `CREATE TABLE` to do this.
 
@@ -195,6 +195,17 @@ NULL
 
 The second method also lists the columns. This can be really beneficial if you want to insert values into some columns but not all. I will recommend using this method. It's a little safer because you have more control and know exactly which value is going and into which column. 
 
-Now you have learned  how to create tables using SQL. There's another thing you can do with tables which is to create a temporary table. 
+Now you have learned  how to create tables using SQL. Another option is to create a copy or get a subset of an existing table. A table created this way is a **temporary table**. The most important thing to know about temporary tables is that they will be deleted when the current client session is terminated. That's why they're called temporary tables. Why do we need temporary table? Because it is mush faster than creating a real table. If you have complex queries and you want to simplify it a bit by creating a subset and then joining to that subset and driving a new calculation from that, then temporary table is a great option. You can use the statement `CREATE TEMPORARY TABLE` to do this:
 
+```sql
+CREATE TEMPORARY TABLE Sandals AS
+(
+SELECT *
+FROM Shoes
+WHERE Types = 'sandals'
+)
+```
 
+In this case, we create a subset of data from `Shoes` table and name the new table `Sandals`. The new table is all records with shoe type sandals.
+
+## SQL Comments
