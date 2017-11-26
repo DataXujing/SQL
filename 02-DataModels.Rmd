@@ -53,13 +53,9 @@ The benefits of a relational model are:
 - simplify the connections between the data
 - allow you to write queries (retrieve/update/write data) easily
 
-NoSQL was part of the Big Data movement that you should have already heard about. It is a mechanism for storage and retrieval where it's not modeled in a tabular relational format. NoSQL was popular when big data and unstructured data first came out because you left it unstructured, but it's now started to soften a little bit, and more commonly referred to as Not Only SQL.
+NoSQL was part of the Big Data movement that you should have already heard about. It is a mechanism for storage and retrieval where it's not modeled in a tabular relational format. NoSQL was popular when big data and unstructured data first came out because you left it unstructured, but it's now started to soften a little bit, and more commonly referred to as Not Only SQL. One question to think about: does SQL really have a role still in the Big Data world, as new things start to come out like NoSQL and unstructured data? 
 
-One question to think about: Does SQL really have a role still in the Big Data world, as new things start to come out like NoSQL and unstructured data? 
-
-How do relational and transactional databases differ? 
-
-A **relational model** is a database design that shows the relationships between the different tables, optimizes querying data, makes it easy and intuitive to access the data. **Transactional model** is a more operational database. If you are in healthcare, for example, you may have a transactional database that is used to store all the claims information and then this information may not be stored in a great way for querying and using it for analysis. In fact, you may need to take and extract that transactional information from the database and move it into a relational model. 
+Next let's talk about the difference between relational and transactional databases. A **relational model** is a database design that shows the relationships between the different tables, optimizes querying data, makes it easy and intuitive to access the data. **Transactional model** is a more operational database. If you are in healthcare, for example, you may have a transactional database that is used to store all the claims information and then this information may not be stored in a great way for querying and using it for analysis. In fact, you may need to take and extract that transactional information from the database and move it into a relational model. 
 
 Most of what we will be working with is the relational model. There are 3 building blocks for relational model:
 
@@ -85,9 +81,52 @@ In UML notation, we have a 1.1 which represents the concept of one and 1.* which
 
 ![](images/ER.png)
 
-Definitely take notes at these. You'll be looking at ER diagrams quite frequently and you'll need to understand these notations when reading ER diagrams so you can understand how you're going to write your query and join the table together or even to find out what's listed in the table. This is really part of that thinking before you start doing' concept I was talking about earlier. Having a good understanding of why the data is structured in a particular way and how to read the ER diagrams will be very helpful to you in writing your queries and ensuring you get accurate results. 
+Get familar with the different notations since you'll be looking at ER diagrams quite frequently and you'll need to understand these notations when reading ER diagrams so you can understand how you're going to write your query and join the table together or even to find out what's listed in the table. Having a good understanding of why the data is structured in a particular way and how to read the ER diagrams is necessary for writing queries and ensuring accurate results. 
 
+## Retrive data with `SELECT`
 
+The majority of what data scientists are doing with SQL is retrieving data. To get started, the first statement to learn is `SELECT`. There are two pieces of information to specify in `SELECT` statement: what to select and where it is from. It will be straightforward with an example.
 
+```sql
+SELECT prod_name
+FROM Products;
+```
 
+```pre
+prod_name
+Shampoo
+Toothpaste
+Deodorant
+Toothbrush
+```
+
+Ihis example selects product name which a column from the table (`prod_name`). Then you need to specify where to get it from. Here it is from a table named `Products`. The output of this is then going to look like the column listed below. Which it has a column product name and then all of the list of products. We have shampoo, toothpaste, deodorant, and toothbrush. If you want to retrieve more than a single column from a table, then what you need to add the names of the individual columns separated with a comma:
+
+```sql
+SELECT prod_name, prod_id, prod_price
+FROM Products;
+```
+
+Request all columns by using the asterisk (`*`) wildcard character instead of column names:
+
+```sql
+SELECT *
+FROM Products;
+```
+
+This is going to go ahead and grab everything from the Products table, each individual column, and put it into your output. 
+
+A lot of times we may want get a view of the table to understand what data is in there without pulling all the records. In this case, we may do a "`SELECT *`". But if there are 5 million records in it, we just need a tiny sample of that. In this case, we can use `LIMIT` to limit the results. 
+
+```sql
+SELECT prod_name
+FROM Products
+LIMIT 5;
+```
+
+Here is an example of how different RDMS differ in syntax:
+
+![](images/DBMS_diff.png)
+
+If you are using SQLite and understand it's `LIMIT 5`. When switch over to a DB2 system, you can easily Google in terms of the syntax in DB2. 
 
