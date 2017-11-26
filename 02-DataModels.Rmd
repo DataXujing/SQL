@@ -209,3 +209,32 @@ WHERE Types = 'sandals'
 In this case, we create a subset of data from `Shoes` table and name the new table `Sandals`. The new table is all records with shoe type sandals.
 
 ## SQL Comments
+
+You may go back to some historical query and modify the query to retrieve some new data. Comments can help you remember what you were doing and why. You can also use the comments to mute the expression of some code, frequently referred to as commenting out code. This technique helps you troubleshoot some of the issues you have with your query. You can effectively get rid of parts of your query without actually getting rid of the statements themselves. And then bring them back in one by one to see where your query goes awry. 
+
+There are two ways of comment.
+
+(1) Single line
+
+```sql
+SELECT Id, 
+-- Brand,
+Types,
+Color,
+Price,
+Descp
+FROM Shoes
+```
+
+The above code uses `--` to comment out `Brand,`
+
+(2) Section
+
+```sql
+SELECT Id, 
+/* Brand,
+Types,
+Color, */
+Price,
+Descp
+```
