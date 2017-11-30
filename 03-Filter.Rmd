@@ -1,2 +1,85 @@
 # Filter
 
+<!-- Summary
+Now that you've began writing your first SQL statements, you're probably really starting to see just how much data you can pull down from databases. So far what you've been experimenting with only has been a few thousand records, but many databases have a lot more data in them. Someday you might work with databases with the millions or even tens of millions of records in it. It almost boggles the mind, right? Well clearly, we're never going to want to look at all of that data at once. So thankfully, SQL gives us several methods to pair down and sort our data so we can quickly get the results we want. That's what we're going to discuss in this module. I'm going to introduce you to several methods for filtering data. At the end of this module, you'll know how to use several more clauses and operators including WHERE, BETWEEN, IN, OR, NOT, LIKE, ORDER BY, and GROUP BY. In addition, I'm going to tell you about wildcards which allow us to search for more specific or parts of record, including their disadvantages and advantages, and how we can best use these wildcards. We'll also discuss how to use some basic math operators as well as aggregate functions like, AVERAGE, COUNT, MIN, and MAX. And we'll start to begin analyzing our data. Obviously, this module's jam packed with new information. So let's not waste any more time, and go ahead and get started. -->
+
+**Learning Objectives**
+
+- Describe the basics of filtering your data
+- Use the `WHERE` clause with common operators
+- Use `BETWEEN` clause
+- Explain the concept of a `NULL` value
+
+Filtering allows us to narrow the data we want to retrieve. Filtering is also used when you're doing analysis to get very specific about the data you want to analyze as part of your model. To do this we use what's called the `WHERE` clause. And the `WHERE` clause comes after `SELECT` and `FROM`
+
+```sql
+SELECT column_name, column_name
+FROM table_name
+WHERE column_name operator value;
+```
+Here is a table of common operators:
+
+|Operator | Description |
+|---------|-------------|
+| `=`| Equal |
+| `<>` | Not equal. Note: In some versions of SQL this operator may be written as `!=`|
+| `>` | Greater than |
+|`<` | Less than |
+| `>=` | Greater than or equal |
+| `<=` | Less than or equal |
+| BETWEEN | Between an inclusive range |
+| IS NULL | Is a null value |
+
+Let's look at some examples.
+
+```sql
+SELECT ProductName,
+UnitPrice,
+SupplierID
+FROM Products
+WHERE ProductName = 'Tofu';
+```
+
+In the above example, we filter on a single condition. We look at  ProductName, UnitPrice and SupplierID for tofu. You can similarly look at products whose prices are greater than or equal to 75. 
+
+```sql
+SELECT ProductName,
+UnitPrice,
+SupplierID
+FROM Products
+WHERE UnitPrice >= 75;
+```
+
+Or you can filter out all records except one value:
+
+```sql
+SELECT ProductName,
+UnitPrice,
+SupplierID
+FROM Products
+WHERE ProductName <> 'Tofu';
+```
+
+You can filter for a range of values:
+
+```sql
+SELECT ProductName,
+Unitprice,
+SupplierID,
+UnitsInStock,
+FROM Products
+WHERE UnitsInStock BETWEEN 15 AND 80;
+```
+
+You can filter `NULL` values by `IS NULL`
+
+```sql
+SELECT ProductName,
+UnitPrice,
+SupplierID,
+UnitsInStock
+FROM Products
+WHERE ProductName IS NULL;
+```
+
+
