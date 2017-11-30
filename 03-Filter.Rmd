@@ -159,3 +159,9 @@ FROM Employees
 WHERE NOT City='London' AND
 NOT City='Seattle';
 ```
+
+**Wildcards**
+
+Have you ever come across data where you knew either the beginning or end of something, but didn't know the rest of it? Or maybe you know that something is like something else, but slightly different. In the rest of this section, we are going to discuss the use of the wildcards and the `LIKE` operator. You will learn the concept of wildcards, including their advantages and disadvantages.
+
+Wildcard is a really powerful especially for string values or text data. A wildcard is a special character used to match parts of a value. You search for a pattern of string. 
