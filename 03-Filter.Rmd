@@ -1,5 +1,6 @@
 # Filter
 
+## `WHERE`
 <!-- Summary
 Now that you've began writing your first SQL statements, you're probably really starting to see just how much data you can pull down from databases. So far what you've been experimenting with only has been a few thousand records, but many databases have a lot more data in them. Someday you might work with databases with the millions or even tens of millions of records in it. It almost boggles the mind, right? Well clearly, we're never going to want to look at all of that data at once. So thankfully, SQL gives us several methods to pair down and sort our data so we can quickly get the results we want. That's what we're going to discuss in this module. I'm going to introduce you to several methods for filtering data. At the end of this module, you'll know how to use several more clauses and operators including WHERE, BETWEEN, IN, OR, NOT, LIKE, ORDER BY, and GROUP BY. In addition, I'm going to tell you about wildcards which allow us to search for more specific or parts of record, including their disadvantages and advantages, and how we can best use these wildcards. We'll also discuss how to use some basic math operators as well as aggregate functions like, AVERAGE, COUNT, MIN, and MAX. And we'll start to begin analyzing our data. Obviously, this module's jam packed with new information. So let's not waste any more time, and go ahead and get started. -->
 
@@ -82,4 +83,79 @@ FROM Products
 WHERE ProductName IS NULL;
 ```
 
+## `IN`, `OR` and `NOT`
 
+**Learning Objectives**
+
+- Use the `IN` and `OR` operators to filter your data and get results you want
+- Differentiate between use of the `IN` and `BETWEEN` operators
+- Discuss importance of order of operations
+- Explain how and when to use the `NOT` operator
+
+Let's start from`IN`. To use the IN operator, we need to specify a range of conditions or a set of values.
+
+```sql
+SELECT
+ProductID,
+UnitPrice,
+SupplierID,
+FROM Products
+WHERE SupplierID IN (9, 10, 11);
+```
+
+Another operator is the `OR` operator. An important thing to know about this is that a database management system will not evaluate the second condition in a `WHERE` clause if the first condition is met. 
+
+```sql
+SELECT
+ProductName,
+ProductID,
+UnitPrice,
+SupplierID,
+ProductName
+FROM Products
+WHERE ProductName = 'Tofu' OR 'Konbu';
+```
+
+You can use `OR` with `AND`. There is somthing you need to pay extra attention. Look at the following two examples:
+
+- Example1:
+
+```sql
+SELECT
+ProductID,
+UnitPrice,
+SupplierID,
+FROM Products
+WHERE SupplierID = 9 OR
+SupplierID = 11
+AND UnitPrice > 15;
+```
+
+![](images/ex1.png){width=40%}
+
+- Example2:
+
+```sql
+SELECT
+ProductID,
+UnitPrice,
+SupplierID
+FROM Products
+WHERE (SupplierID = 9 OR
+SupplierID = 11)
+AND UnitPrice > 15;
+```
+![](images/ex2.png){width=40%}
+
+Since SQL processes the `OR` before the `AND`, in example1, SQL will stop after processing `OR`, so it won't even get to the operation after `AND`. In order to solve that, you need to use parentheses.
+
+Even you don't have to use a parenthesis, but it's always really recommended. This way you're not relying on the default order of operations.
+
+You can use `NOT` to get the supplementary part:
+
+```sql
+SELECT *
+FROM Employees
+WHERE NOT City='London' AND
+NOT City='Seattle';
+```
