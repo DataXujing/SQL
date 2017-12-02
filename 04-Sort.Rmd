@@ -1,0 +1,22 @@
+# Sort
+
+**Learning Objectives**
+
+- Explain some of the rules related to using the `ORDER BY` clause
+- Use the `ORDER BY` clause to sort data either in ascending or descending order
+
+`ORDER BY` allows us to sort data by particular columns. Now there are a few rules when using `ORDER BY`:
+
+1. It can take multiple column names.
+2. If you're doing multiple columns, you just want to make sure you're adding a comma after that. 
+3. You can sort by a column that you didn't retrieve. 
+4. It must always be the last clause in the select statement. 
+
+You can sort by column position. For example, sort by column 2 and 3:
+
+```sql
+ORDER BY 2,3
+```
+
+There are also some directions as with any type of sorting, either in ascending, `ASC`, or descending order, `DESC`. This is only applied to the column name it directly proceeds. If you're using order by descending and have unit price, it's not going to do it for all of columns after the `DESC`. You have to specify each individual columns for ascending and descending, if you want it that way.
+

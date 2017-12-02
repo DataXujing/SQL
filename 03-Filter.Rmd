@@ -169,8 +169,38 @@ Wildcard is a really powerful especially for string values or text data. A wildc
 **`%` Wildcards**
 
 | Wildcard | Action |
+|----------|--------|
 | `%carrot` | Grab anything ending with the word `carrot` |
 | `carrot%` | Grab anything after the word  `carrot` |
 | `%carrot%` | Grab anything containing the word `carrot` |
 | `today%happy` | Grab anything that starts with `today` and ends with `happy`|
 |`t%@gmail.com` | Grab gmail address that start with `t`|
+
+Underscore(`_`) wildcard matches a single character but it is not supported by DB2.
+
+```sql
+WHERE size LIKE `_carrot`
+```
+
+Output:
+
+```pre
+lcarrot
+mcarrot
+scarrot
+```
+
+It is identical with: 
+
+```sql
+WHERE size LIKE `%carrot`
+```
+
+Bracket (`[]`) wildcard specifies a set of characters in a specific location. It does not work with all DBMS. It does not work with SQLite.
+
+There are some downsides to using wildcards:
+
+- Takes longer to run
+- Better to use another operator (if possible) `=`,`<`,`>=` etc.
+- Depending on the system
+- Hard to read
