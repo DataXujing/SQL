@@ -1,0 +1,54 @@
+# Aggregrate Functions
+
+**Learning Objectives**
+
+- Describe various aggregate functions
+- Use various aggregate functions: `AVERAGE`, `COUNT`, `MIN`, `MAX` and `SUM` to summarize and analyze data
+- Describe the `DISTINCT` function
+
+Aggregate functions are used for various things such as finding the highest or lowest values, total number of records, average value, etc. We're going to use a lot of these different types of aggregate functions to get descriptive statistics. The aggregate functions we can use are `AVG`, `COUNT`, `MIN`, `MAX`, and `SUM` and all of these are pretty self explanatory. 
+
+| Function | Description |
+|----------|-------------|
+| `AVG()` | Averages a column of values |
+| `COUNT()` | Counts the number of values |
+| `MIN()` | Finds the minimum value |
+| `MAX()` | Finds the maximum value |
+| `SUM()` | Sums the column values |
+
+- `AVG()`
+
+```sql
+SELECT AVG(UnitPrice) AS avg_price
+FROM Products;
+```
+
+- `COUNT(*)`: Counts all the rows in a table containing `NULL` values
+
+```sql
+SELECT COUNT(*) AS total_customers
+FROM Customers;
+```
+
+- `COUNT(column)`: Counts all the rows in a specific column ignoring `NULL` values
+
+```sql
+SELECT COUNT(CustomerID) AS total_customers
+FROM Customers;
+```
+
+- `SUM()`
+
+```sql
+SELECT SUM(UnitPrice*UnitsInStock) AS total_price
+FROM Products
+WHERE SupplierID = 23;
+```
+
+One important thing to use with aggregate functions is the word `DISTINCT`.  If the word `DISTINCT` isn't specific in a statement, SQL will always assume you want all the data. For example, you may have a customer who's in a table multiple times. If you're counting customer IDs, you may count duplicate records in there. And this is really helpful to run queries where you're counting distinct and to see if there are duplicates in a column. There are some things to keep in mind when using `DISTINCT` with our aggregate function of `COUNT` You can't use `DISTINCT` on the `COUNT(*)`.
+
+```sql
+SELECT COUNT(DISTINCT CustomerID)
+FROM Customers;
+```
+
