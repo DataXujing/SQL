@@ -360,3 +360,16 @@ WHERE UnitPrice >= 4
 GROUP BY SupplierID
 HAVING COUNT (*) >= 2;
 ```
+
+### Summary
+
+Here is a table of key SQL clauses in order:
+
+| Clause | Description | Required |
+|--------|-------------|----------|
+| `SELECT` | Columns or expressions to be returned | Yes |
+| `FROM` | Table from which to retrieve data | Only if selecting data from a table |
+| `WHERE` | Row-level filtering | No |
+| `GROUP BY` | Group specification | Only if calculating aggregates by group |
+| `HAVING` | Group-level filter | No |
+| `ORDER BY` | Output sort order | No |
