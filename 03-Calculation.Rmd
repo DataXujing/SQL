@@ -361,7 +361,7 @@ GROUP BY SupplierID
 HAVING COUNT (*) >= 2;
 ```
 
-### Summary
+## Summary
 
 Here is a table of key SQL clauses in order:
 
