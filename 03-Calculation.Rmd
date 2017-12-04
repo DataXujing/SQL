@@ -100,7 +100,7 @@ Let's start from`IN`. To use the IN operator, we need to specify a range of cond
 SELECT
 ProductID,
 UnitPrice,
-SupplierID,
+SupplierID
 FROM Products
 WHERE SupplierID IN (9, 10, 11);
 ```
