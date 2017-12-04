@@ -350,3 +350,13 @@ HAVING COUNT (*) >=2;
 ```
 
 To sum up, `WHERE` filters before the data is grouped and then `HAVING` filters after the data is grouped. Rows eliminated by the `WHERE` clause will not be included in the `GROUP BY` clause. It is important to know when you should use `WHERE` versus `HAVING`. 
+
+Another thing to note about `GROUP BY` is that it's always a good practice to use the `ORDER BY` clause. The `GROUP BY` does not sort the data in any fashion. It only groups it together. In our previous examples, we have a list of states, a list of regions. It's not going to sort those regions in alphabetical order. It's just going to group them by different regions. It is recommended to use `ORDER BY` in this situation. It makes the results a little easier to read.
+
+```sql
+SELECT SupplierID, COUNT(*) AS Num_Prod
+FROM Products
+WHERE UnitPrice >= 4
+GROUP BY SupplierID
+HAVING COUNT (*) >= 2;
+```
