@@ -318,3 +318,35 @@ SELECT COUNT(DISTINCT CustomerID)
 FROM Customers;
 ```
 
+## Group Data
+
+**Learning Objectives**
+
+- perform additional aggregations using `GROUP BY` and `HAVING` clause
+- discuss how `NULL`s are or aren't affected by the `GROUP BY` and `HAVING` clauses
+- use the `GROUP BY` and `ORDER BY` clauses together to better sort your data
+
+A lot of times, we'll be looking at the average price for different types of products, or total perchasing for different customer segments. Then we need to aggregate data by groups.  In this example, assume we want to know the number of customers we have by each region. 
+
+```sql
+SELECT Region, COUNT(CustomerID) AS total_customers
+FROM Customers
+GROUP BY Region;
+```
+
+If we were to just have our `SELECT` statement with `Region, COUNT(CustomerID) AS total_customers`, but without specifying the variable to `GROUP BY`, we're going to get an error return. Because the computer doesn't know how to count the customer IDs. So we put the `GROUP BY` clause in the end. There are three things to pay attention:
+
+1. `GROUP BY` clauses can contain multiple columns. 
+2. Every column in your `SELECT` statement must be present in a `GROUP BY` clause, except for aggregated calculations. 
+3. `NULL`s will be grouped together if your `GROUP BY` column contains `NULL`s.
+
+`HAVING` clause works for groups. But `WHERE` filters on rows not groups.
+
+```sql
+SELECT CustomerID, COUNT (*) AS orders
+FROM Orders
+GROUP BY CustomerID
+HAVING COUNT (*) >=2;
+```
+
+To sum up, `WHERE` filters before the data is grouped and then `HAVING` filters after the data is grouped. Rows eliminated by the `WHERE` clause will not be included in the `GROUP BY` clause. It is important to know when you should use `WHERE` versus `HAVING`. 
