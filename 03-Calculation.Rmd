@@ -373,3 +373,20 @@ Here is a table of key SQL clauses in order:
 | `GROUP BY` | Group specification | Only if calculating aggregates by group |
 | `HAVING` | Group-level filter | No |
 | `ORDER BY` | Output sort order | No |
+
+**SQL for various data science languages**
+
+- SQL for R (You should really learn `dplyr`......the package here is just FYI)
+    - [SQLDF Package](https://cran.r-project.org/web/packages/sqldf/index.html)
+    - [Documentation](https://cran.r-project.org/web/packages/sqldf/sqldf.pdf)
+    - [Examples](https://www.r-bloggers.com/manipulating-data-frames-using-sqldf-a-brief-overview/)
+    
+- SQL for Spark
+    - [Documentation](https://spark.apache.org/docs/latest/sql-programming-guide.html#overview)
+
+- SQL with Hadoop
+    - [Hive Overview](https://hive.apache.org)
+    - [Documentation](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+
+- SQL for Python
+    - [Python-SQL Package Documentation](https://pypi.python.org/pypi/python-sql)
